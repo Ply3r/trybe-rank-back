@@ -1,0 +1,19 @@
+on: [push, pull_request]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verifica o repositorio no github
+        uses: actions/checkout@v2
+
+      - name: Instala o nodeJs
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 14
+
+      - name: Rodando o npm install
+        run: npm install
+
+      - name: Rodando o eslint
+        run: npx eslint .
